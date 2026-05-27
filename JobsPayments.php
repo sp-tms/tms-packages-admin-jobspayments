@@ -2,60 +2,36 @@
 
 namespace Apps\Tms\Packages\Jobs\Payments;
 
+use Apps\Tms\Packages\Jobs\Payments\Model\AppsTmsJobsPayments;
 use System\Base\BasePackage;
 
 class JobsPayments extends BasePackage
 {
-    //protected $modelToUse = ::class;
+    protected $modelToUse = AppsTmsJobsPayments::class;
 
-    protected $packageName = 'jobspayments';
+    protected $packageName = 'payments';
 
-    public $jobspayments;
+    public $payments;
 
-    public function getJobsPaymentsById($id)
+    public function init()
     {
-        $jobspayments = $this->getById($id);
+        parent::init();
 
-        if ($jobspayments) {
-            //
-            $this->addResponse('Success');
-
-            return;
-        }
-
-        $this->addResponse('Error', 1);
+        return $this;
     }
 
-    public function addJobsPayments($data)
+    public function addPayment($data)
     {
         //
     }
 
-    public function updateJobsPayments($data)
+    public function updatePayment($data)
     {
-        $jobspayments = $this->getById($id);
-
-        if ($jobspayments) {
-            //
-            $this->addResponse('Success');
-
-            return;
-        }
-
-        $this->addResponse('Error', 1);
+        //
     }
 
-    public function removeJobsPayments($data)
+    public function removePayment($data)
     {
-        $jobspayments = $this->getById($id);
-
-        if ($jobspayments) {
-            //
-            $this->addResponse('Success');
-
-            return;
-        }
-
-        $this->addResponse('Error', 1);
+        //
     }
 }

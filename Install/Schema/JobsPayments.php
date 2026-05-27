@@ -12,7 +12,7 @@ class JobsPayments
         return
         [
            'columns' => [
-                new Column(
+                new Column(//Id should match LR and Trip IDs.
                     'id',
                     [
                         'type'          => Column::TYPE_INTEGER,
@@ -22,7 +22,21 @@ class JobsPayments
                     ]
                 ),
                 new Column(
-                    'first_name',
+                    'lr_no',
+                    [
+                        'type'          => Column::TYPE_INTEGER,
+                        'notNull'       => true,
+                    ]
+                ),
+                new Column(//1-Cheque, 2-RTGS
+                    'payment_method',
+                    [
+                        'type'          => Column::TYPE_TINYINTEGER,
+                        'notNull'       => true,
+                    ]
+                ),
+                new Column(
+                    'date',
                     [
                         'type'          => Column::TYPE_VARCHAR,
                         'size'          => 50,
@@ -30,19 +44,57 @@ class JobsPayments
                     ]
                 ),
                 new Column(
-                    'last_name',
+                    'cheque_no',
                     [
                         'type'          => Column::TYPE_VARCHAR,
-                        'size'          => 50,
+                        'size'          => 100,
+                        'notNull'       => false,
+                    ]
+                ),
+                new Column(
+                    'tx_no',
+                    [
+                        'type'          => Column::TYPE_VARCHAR,
+                        'size'          => 100,
+                        'notNull'       => false,
+                    ]
+                ),
+                new Column(
+                    'bank_name',
+                    [
+                        'type'          => Column::TYPE_VARCHAR,
+                        'size'          => 100,
+                        'notNull'       => false,
+                    ]
+                ),
+                new Column(
+                    'amount',
+                    [
+                        'type'          => Column::TYPE_FLOAT,
                         'notNull'       => true,
                     ]
-                )
+                ),
+                new Column(
+                    'status',
+                    [
+                        'type'          => Column::TYPE_TINYINTEGER,
+                        'notNull'       => true,
+                    ]
+                ),
+                new Column(
+                    'payment_notes',
+                    [
+                        'type'          => Column::TYPE_VARCHAR,
+                        'size'          => 2048,
+                        'notNull'       => false,
+                    ]
+                ),
             ],
             'indexes' => [
                 new Index(
                     'column_UNIQUE',
                     [
-                        'last_name'
+                        'lr_no'
                     ],
                     'UNIQUE'
                 )
@@ -60,7 +112,7 @@ class JobsPayments
             new Index(
                 'column_INDEX',
                 [
-                    'first_name'
+                    'lr_no'
                 ],
                 'INDEX'
             )
