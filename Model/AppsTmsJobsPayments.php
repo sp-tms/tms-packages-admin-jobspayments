@@ -8,7 +8,7 @@ class AppsTmsJobsPayments extends BaseModel
 {
     public $id;
 
-    public $lr_no;
+    public $lr_id;
 
     public $payment_method;
 
