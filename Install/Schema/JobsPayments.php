@@ -22,7 +22,7 @@ class JobsPayments
                     ]
                 ),
                 new Column(
-                    'lr_id',
+                    'lr_no',
                     [
                         'type'          => Column::TYPE_INTEGER,
                         'notNull'       => true,
@@ -94,7 +94,10 @@ class JobsPayments
                 new Index(
                     'column_UNIQUE',
                     [
-                        'lr_no'
+                        'lr_no',
+                        'date',
+                        'cheque_no',
+                        'tx_no'
                     ],
                     'UNIQUE'
                 )
